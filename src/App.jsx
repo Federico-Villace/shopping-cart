@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header changeFilters={setFilter} />
       <Products products={filteredProducts(products)} />
     </>
   );

@@ -1,12 +1,22 @@
 import { useState } from "react";
 
-export const Filters = () => {
+export const Filters = ({ changeFilters }) => {
   const [minPrice, setMinPrice] = useState(0);
 
   const handleMinPrice = (e) => {
     setMinPrice(e.target.value);
+    changeFilters((prevState) => ({
+      ...prevState,
+      minPrice: e.target.value,
+    }));
   };
 
+  const handleChangeCategory = (e) => {
+    changeFilters((prevState) => ({
+      ...prevState,
+      category: e.target.value,
+    }));
+  };
   return (
     <section>
       <div>
@@ -22,9 +32,9 @@ export const Filters = () => {
       </div>
       <div>
         <label htmlFor="category">Category</label>
-        <select id="category">
+        <select id="category" onChange={handleChangeCategory}>
           <option value="all">All</option>
-          <option value="notebooks">Notebooks</option>
+          <option value="laptops">Notebooks</option>
           <option value="smartphones">Smartphones</option>
         </select>
       </div>
