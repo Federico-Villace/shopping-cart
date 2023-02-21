@@ -27,7 +27,7 @@ export const Filters = ({ changeFilters }) => {
           type="range"
           id={minPriceFilterId}
           min="0"
-          max="1000"
+          max="1749"
           onChange={handleMinPrice}
         />
         <span>${minPrice}</span>
