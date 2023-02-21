@@ -1,0 +1,11 @@
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}

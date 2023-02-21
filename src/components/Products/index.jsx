@@ -1,9 +1,9 @@
 import { AddToCartIcon } from "../icons";
+import "./products.css";
 
 export function Products({ products }) {
-  console.log(products);
   return (
-    <main>
+    <main className="products">
       <ul>
         {products.map((prod) => (
           <li key={prod.id}>
