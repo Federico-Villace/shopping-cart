@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Header } from "./components/Header";
 import { Products } from "./components/products";
 import { products as initialProducts } from "./mocks/products.json";
