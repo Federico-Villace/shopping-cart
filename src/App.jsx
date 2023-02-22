@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Header } from "./components/Header";
 import { Products } from "./components/products";
+import { FiltersContext } from "./context/filters";
 import { products as initialProducts } from "./mocks/products.json";
 
-function App() {
-  const [products] = useState(initialProducts);
-  const [filters, setFilter] = useState({
-    category: "all",
-    minPrice: 0,
-  });
+const useFilters = () => {
+  const { filters, setFilters } = useContext(FiltersContext);
 
   const filteredProducts = (products) => {
     return products.filter((product) => {
@@ -18,10 +15,15 @@ function App() {
       );
     });
   };
+  return { setFilters, filteredProducts };
+};
 
+function App() {
+  const [products] = useState(initialProducts);
+  const { setFilters, filteredProducts } = useFilters();
   return (
     <>
-      <Header changeFilters={setFilter} />
+      <Header changeFilters={setFilters} />
       <Products products={filteredProducts(products)} />
     </>
   );
