@@ -6,10 +6,10 @@ import { useFilters } from "./hooks/useFilters";
 
 function App() {
   const [products] = useState(initialProducts);
-  const { setFilters, filteredProducts } = useFilters();
+  const { filteredProducts } = useFilters();
   return (
     <>
-      <Header changeFilters={setFilters} />
+      <Header />
       <Products products={filteredProducts(products)} />
     </>
   );
