@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Header } from "./components/Header/index";
-import { Products } from "./components/products/index";
+import { Header } from "./components/Header/HeaderComponent";
+import { Products } from "./components/Products/ProductsComponent";
 import { products as initialProducts } from "./mocks/products.json";
 import { useFilters } from "./hooks/useFilters";
-import { Cart } from "./components/Cart/index";
+import { Cart } from "./components/Cart/CartComponent";
 import { CartProvider } from "./context/cart";
 
 function App() {
