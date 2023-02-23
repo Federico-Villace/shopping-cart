@@ -1,4 +1,4 @@
-import { Filters } from "../Filters/index";
+import { Filters } from "../Filters/FiltersComponent";
 
 export const Header = () => {
   return (
