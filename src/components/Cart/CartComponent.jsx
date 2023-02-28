@@ -21,10 +21,10 @@ export const Cart = () => {
         const sum = item.price * item.quantity;
         return sum;
       });
-      const totalPrice = arr.reduce((acum, actual) => {
+      const totPrice = arr.reduce((acum, actual) => {
         return acum + actual;
       });
-      setTotal(totalPrice);
+      setTotal(totPrice);
     };
 
     useEffect(() => {
