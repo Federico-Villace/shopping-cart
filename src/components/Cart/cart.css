@@ -6,6 +6,11 @@
   right: 0px;
   top: 0px;
   width: 200px;
+  overflow-y: scroll;
+}
+
+.cart::-webkit-scrollbar {
+  display: none;
 }
 
 .cart img {
