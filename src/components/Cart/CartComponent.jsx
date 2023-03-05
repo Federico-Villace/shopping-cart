@@ -5,8 +5,21 @@ import "./cart.css";
 
 export const Cart = () => {
   const [total, setTotal] = useState(0);
-  const { cart, clearCart, addToCart } = useCart();
+  const { cart, clearCart, addToCart, setCart } = useCart();
   const cartCheckboxId = useId();
+
+  const getCart = () => {
+    const newCart = JSON.parse(localStorage.getItem("cart"));
+    if (newCart.length > 0) {
+      setTimeout(() => {
+        setCart(newCart);
+      }, 2000);
+    }
+  };
+
+  useState(() => {
+    getCart();
+  }, []);
 
   const CartItem = ({ thumbnail, title, quantity, price, addToCart }) => {
     const [itemTotal, setItemTotal] = useState(0);
@@ -14,6 +27,7 @@ export const Cart = () => {
     const totalItemPrice = () => {
       const newItemTotal = price * quantity;
       setItemTotal(newItemTotal);
+      localStorage.setItem("cart", JSON.stringify(cart));
     };
 
     const totalPrice = () => {
