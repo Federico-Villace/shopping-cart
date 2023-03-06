@@ -14,14 +14,14 @@ function App() {
 
   useEffect(() => {
     console.log(webProducts);
-    if (webProducts.length === 0) {
+    if (webProducts?.length === 0) {
       getElements();
     }
     getProducts();
   }, [webProducts]);
 
   const getProducts = () => {
-    if (webProducts.length > 0) {
+    if (webProducts?.length > 0) {
       const prods = { products: [webProducts] };
       setProducts(prods.products[0]);
     }
@@ -31,7 +31,7 @@ function App() {
     <CartProvider>
       <Header />
       <Cart />
-      {webProducts.length === 0 ? (
+      {webProducts?.length === 0 ? (
         <Spinner />
       ) : (
         <Products products={filteredProducts(products)} />
