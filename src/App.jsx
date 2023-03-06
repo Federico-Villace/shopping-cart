@@ -13,6 +13,7 @@ function App() {
   const { filteredProducts } = useFilters();
 
   useEffect(() => {
+    console.log(webProducts);
     if (webProducts.length === 0) {
       getElements();
     }
