@@ -10,11 +10,15 @@ export const Cart = () => {
 
   const getCart = () => {
     const newCart = JSON.parse(localStorage.getItem("cart"));
+    if (newCart === null) {
+      localStorage.setItem("cart", JSON.stringify([]));
+    }
     if (newCart.length > 0) {
       setTimeout(() => {
         setCart(newCart);
       }, 2000);
     }
+    return;
   };
 
   useState(() => {
