@@ -10,7 +10,7 @@ import { supabase } from "./utils/supabaseClient";
 import { Auth } from "./components/Authentication";
 import { Account } from "./components/Account";
 
-function App() {
+function App({ router }) {
   const [products, setProducts] = useState([]);
   const { webProducts, getElements } = useProducts();
   const { filteredProducts } = useFilters();
@@ -47,8 +47,8 @@ function App() {
         <Auth />
       ) : (
         <CartProvider>
-          <Header />
           <Account key={session.user.id} session={session} />
+          <Header />
           <Cart />
           {products?.length === 0 ? (
             <Spinner />
