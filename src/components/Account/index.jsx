@@ -1,71 +1,28 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { supabase } from "../../utils/supabaseClient";
+import { useAccount } from "../../hooks/useAccount";
+import { useSession } from "../../hooks/useSession";
+import { Spinner } from "../Spinner";
 
-export const Account = ({ session }) => {
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
+export const Account = () => {
+  const { session } = useSession();
+  const {
+    username,
+    setUsername,
+    website,
+    setWebsite,
+    loading,
+    updateProfile,
+    getProfile,
+  } = useAccount();
 
   useEffect(() => {
     getProfile();
   }, [session]);
 
-  const getProfile = async () => {
-    try {
-      setLoading(true);
-      const { user } = session;
-
-      let { data, error, status } = await supabase
-        .from("profiles")
-        .select(`username, website, avatar_url`)
-        .eq("id", user.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setUsername(data.username);
-        setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const updateProfile = async (e) => {
-    e.preventDefault();
-
-    try {
-      setLoading(true);
-      const { user } = session;
-
-      const updates = {
-        id: user.id,
-        username,
-        website,
-        avatar_url,
-        updated_at: new Date(),
-      };
-
-      let { error } = await supabase.from("profiles").upsert(updates);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
+  return !session ? (
+    <Spinner />
+  ) : (
     <div aria-live="polite">
       {loading ? (
         "Saving ..."

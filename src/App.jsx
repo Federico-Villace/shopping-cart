@@ -6,26 +6,12 @@ import { Cart } from "./components/Cart/CartComponent";
 import { CartProvider } from "./context/cart";
 import { useProducts } from "./hooks/useProducts";
 import { Spinner } from "./components/Spinner";
-import { supabase } from "./utils/supabaseClient";
-import { Auth } from "./components/Authentication";
-import { Account } from "./components/Account";
 
-function App({ router }) {
+function App() {
   const [products, setProducts] = useState([]);
   const { webProducts, getElements } = useProducts();
   const { filteredProducts } = useFilters();
   const filterProducts = filteredProducts(products);
-  const [session, setSession] = useState(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, []);
 
   useEffect(() => {
     if (webProducts?.length === 0) {
@@ -42,22 +28,15 @@ function App({ router }) {
   };
 
   return (
-    <div className="container" style={{ padding: "50px 0 100px 0" }}>
-      {!session ? (
-        <Auth />
+    <CartProvider>
+      <Header />
+      <Cart />
+      {products?.length === 0 ? (
+        <Spinner />
       ) : (
-        <CartProvider>
-          <Account key={session.user.id} session={session} />
-          <Header />
-          <Cart />
-          {products?.length === 0 ? (
-            <Spinner />
-          ) : (
-            <Products products={filterProducts} />
-          )}
-        </CartProvider>
+        <Products products={filterProducts} />
       )}
-    </div>
+    </CartProvider>
   );
 }
 
