@@ -14,7 +14,6 @@ function App() {
   const filterProducts = filteredProducts(products);
 
   useEffect(() => {
-    console.log(webProducts);
     if (webProducts?.length === 0) {
       getElements();
     }
