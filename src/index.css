@@ -20,6 +20,8 @@
   padding: 2rem;
   text-align: center;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 body {
@@ -394,9 +396,9 @@ button.primary,
 }
 
 .form-widget {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 20px;
+  min-width: 300px;
 }
 
 .form-widget > .button {

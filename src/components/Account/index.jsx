@@ -1,13 +1,12 @@
-import { useEffect } from "react";
-import { supabase } from "../../utils/supabaseClient";
+import { useState, useEffect } from "react";
 import { useAccount } from "../../hooks/useAccount";
 import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
-import { useNavigate } from "react-router-dom";
+import { LogoutButton } from "../Buttons/LogoutButton";
 
 export const Account = () => {
+  const [update, setUpdate] = useState(false);
   const { session } = useSession();
-  const navigate = useNavigate();
 
   const {
     username,
@@ -23,48 +22,76 @@ export const Account = () => {
     getProfile();
   }, [session]);
 
-  const handleLogout = () => {
-    supabase.auth.signOut();
-    return navigate("/");
+  const handleButtonUpdate = (e) => {
+    e.preventDefault();
+    setUpdate(!update);
   };
 
   return !session ? (
     <Spinner />
   ) : (
-    <div aria-live="polite">
+    <div aria-live="polite ">
       {loading ? (
         "Saving ..."
       ) : (
         <form onSubmit={updateProfile} className="form-widget">
-          <div>Email: {session.user.email}</div>
           <div>
-            <label htmlFor="username">Name</label>
-            <input
-              id="username"
-              type="text"
-              value={username || ""}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+            <label>Email</label>
+            {session.user.email}
           </div>
+          {update ? (
+            <>
+              <div>
+                <label htmlFor="username">Name</label>
+
+                <input
+                  id="username"
+                  type="text"
+                  value={username || ""}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  type="url"
+                  value={website || ""}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
+              <div>
+                <span>
+                  <button onChange={() => setUpdate(!update)}>Confirm</button>
+                </span>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <label htmlFor="username">Name</label>
+
+                {username}
+              </div>
+              <div>
+                <label htmlFor="website">Website</label>
+                {website}
+              </div>
+            </>
+          )}
+
           <div>
-            <label htmlFor="website">Website</label>
-            <input
-              id="website"
-              type="url"
-              value={website || ""}
-              onChange={(e) => setWebsite(e.target.value)}
-            />
-          </div>
-          <div>
-            <button className="button primary block" disabled={loading}>
+            <button
+              className="button primary"
+              disabled={loading}
+              onClick={(e) => handleButtonUpdate(e)}
+            >
               Update profile
             </button>
           </div>
+          <LogoutButton />
         </form>
       )}
-      <button type="button" className="button block" onClick={handleLogout}>
-        Sign Out
-      </button>
     </div>
   );
 };

@@ -6,9 +6,5 @@ import { useSession } from "../hooks/useSession";
 export const Root = () => {
   const { session } = useSession();
 
-  return (
-    <div className="container" style={{ padding: "50px 0 100px 0" }}>
-      {!session ? <Auth /> : <App />}
-    </div>
-  );
+  return <div className="container">{!session ? <Auth /> : <App />}</div>;
 };
