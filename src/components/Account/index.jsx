@@ -3,9 +3,12 @@ import { supabase } from "../../utils/supabaseClient";
 import { useAccount } from "../../hooks/useAccount";
 import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
+import { useNavigate } from "react-router-dom";
 
 export const Account = () => {
   const { session } = useSession();
+  const navigate = useNavigate();
+
   const {
     username,
     setUsername,
@@ -19,6 +22,11 @@ export const Account = () => {
   useEffect(() => {
     getProfile();
   }, [session]);
+
+  const handleLogout = () => {
+    supabase.auth.signOut();
+    return navigate("/");
+  };
 
   return !session ? (
     <Spinner />
@@ -54,11 +62,7 @@ export const Account = () => {
           </div>
         </form>
       )}
-      <button
-        type="button"
-        className="button block"
-        onClick={() => supabase.auth.signOut()}
-      >
+      <button type="button" className="button block" onClick={handleLogout}>
         Sign Out
       </button>
     </div>
