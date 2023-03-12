@@ -1,6 +1,7 @@
 import { useId, useState, useEffect } from "react";
 import { useCart } from "../../hooks/useCart";
 import { CartIcon, ClearCartIcon } from "../icons";
+import { Filters } from "../Filters/FiltersComponent";
 import "./cart.css";
 
 export const Cart = () => {
@@ -72,6 +73,7 @@ export const Cart = () => {
 
   return (
     <>
+      <Filters />
       <label className="cart-button" htmlFor={cartCheckboxId}>
         <CartIcon />
       </label>

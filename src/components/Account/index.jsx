@@ -3,6 +3,7 @@ import { useAccount } from "../../hooks/useAccount";
 import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
 import { LogoutButton } from "../Buttons/LogoutButton";
+import { Header } from "../Header/HeaderComponent";
 
 export const Account = () => {
   const [update, setUpdate] = useState(false);
@@ -30,67 +31,71 @@ export const Account = () => {
   return !session ? (
     <Spinner />
   ) : (
-    <div aria-live="polite ">
+    <div>
       {loading ? (
         "Saving ..."
       ) : (
-        <form onSubmit={updateProfile} className="form-widget">
-          <div>
-            <label>Email</label>
-            {session.user.email}
-          </div>
-          {update ? (
-            <>
-              <div>
-                <label htmlFor="username">Name</label>
+        <>
+          <Header />
 
-                <input
-                  id="username"
-                  type="text"
-                  value={username || ""}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="website">Website</label>
-                <input
-                  id="website"
-                  type="url"
-                  value={website || ""}
-                  onChange={(e) => setWebsite(e.target.value)}
-                />
-              </div>
-              <div>
-                <span>
-                  <button onChange={() => setUpdate(!update)}>Confirm</button>
-                </span>
-              </div>
-            </>
-          ) : (
-            <>
-              <div>
-                <label htmlFor="username">Name</label>
+          <form onSubmit={updateProfile} className="form-widget">
+            <div>
+              <label>Email</label>
+              {session.user.email}
+            </div>
+            {update ? (
+              <>
+                <div>
+                  <label htmlFor="username">Name</label>
 
-                {username}
-              </div>
-              <div>
-                <label htmlFor="website">Website</label>
-                {website}
-              </div>
-            </>
-          )}
+                  <input
+                    id="username"
+                    type="text"
+                    value={username || ""}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    type="url"
+                    value={website || ""}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <span>
+                    <button onChange={() => setUpdate(!update)}>Confirm</button>
+                  </span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div>
+                  <label htmlFor="username">Name</label>
 
-          <div>
-            <button
-              className="button primary"
-              disabled={loading}
-              onClick={(e) => handleButtonUpdate(e)}
-            >
-              Update profile
-            </button>
-          </div>
-          <LogoutButton />
-        </form>
+                  {username}
+                </div>
+                <div>
+                  <label htmlFor="website">Website</label>
+                  {website}
+                </div>
+              </>
+            )}
+
+            <div>
+              <button
+                className="button primary"
+                disabled={loading}
+                onClick={(e) => handleButtonUpdate(e)}
+              >
+                Update profile
+              </button>
+            </div>
+            <LogoutButton />
+          </form>
+        </>
       )}
     </div>
   );

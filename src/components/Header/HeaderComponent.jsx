@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Filters } from "../Filters/FiltersComponent";
 import { UserIcon } from "../icons";
 import { useAccount } from "../../hooks/useAccount";
 import "./headers.css";
@@ -22,7 +21,6 @@ export const Header = () => {
         </ul>
       </nav>
       <h1>LS Technologies 🛒</h1>
-      <Filters />
     </header>
   );
 };
