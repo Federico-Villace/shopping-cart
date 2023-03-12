@@ -10,8 +10,8 @@ export const LogoutButton = () => {
     return navigate("/");
   };
   return (
-    <button type="button" className="button" onClick={handleLogout}>
+    <a onClick={handleLogout}>
       <LogOutIcon />
-    </button>
+    </a>
   );
 };
