@@ -1,11 +1,7 @@
 .filters {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.filters label {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
+  display: grid;
+  justify-content: end;
+  margin-right: 10px;
+  grid-auto-flow: column;
+  gap: 20px;
 }

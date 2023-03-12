@@ -1,0 +1,10 @@
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.header-li {
+  display: flex;
+  margin-right: 5px;
+}

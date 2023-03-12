@@ -23,7 +23,7 @@ export const Filters = () => {
   return (
     <section className="filters">
       <div>
-        <label htmlFor={minPriceFilterId}>Price</label>
+        <label htmlFor={minPriceFilterId}>Price </label>
         <input
           type="range"
           id={minPriceFilterId}
