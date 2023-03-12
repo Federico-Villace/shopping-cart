@@ -5,11 +5,11 @@ export const LogoutButton = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    //supabase.auth.signOut();
+    supabase.auth.signOut();
     return navigate("/");
   };
   return (
-    <button type="button" className="button " onClick={handleLogout}>
+    <button type="button" className="button" onClick={handleLogout}>
       Sign Out
     </button>
   );

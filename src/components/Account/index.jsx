@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useAccount } from "../../hooks/useAccount";
 import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
-import { LogoutButton } from "../Buttons/LogoutButton";
 import { Header } from "../Header/HeaderComponent";
+import { ReturnButton } from "../Buttons/ReturnButton";
 
 export const Account = () => {
   const [update, setUpdate] = useState(false);
@@ -84,7 +84,7 @@ export const Account = () => {
               </>
             )}
 
-            <div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <button
                 className="button primary"
                 disabled={loading}
@@ -93,7 +93,7 @@ export const Account = () => {
                 Update profile
               </button>
             </div>
-            <LogoutButton />
+            <ReturnButton />
           </form>
         </>
       )}
