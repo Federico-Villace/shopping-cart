@@ -1,5 +1,6 @@
 import { supabase } from "../../utils/supabaseClient";
 import { useNavigate } from "react-router";
+import { LogOutIcon } from "../icons";
 
 export const LogoutButton = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export const LogoutButton = () => {
   };
   return (
     <button type="button" className="button" onClick={handleLogout}>
-      Sign Out
+      <LogOutIcon />
     </button>
   );
 };

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { UserIcon } from "../icons";
 import { useAccount } from "../../hooks/useAccount";
 import "./headers.css";
+import { LogoutButton } from "../Buttons/LogoutButton";
 
 export const Header = () => {
   const { username } = useAccount();
@@ -17,7 +18,9 @@ export const Header = () => {
               <UserIcon />
             </Link>
           </li>
-          <li></li>
+          <li>
+            <LogoutButton />
+          </li>
         </ul>
       </nav>
       <h1>LS Technologies 🛒</h1>

@@ -22,7 +22,7 @@ export function Auth() {
   return (
     <div className="row flex-center flex">
       <div className="col-6 form-widget" aria-live="polite">
-        <h1 className="header">Supabase + React</h1>
+        <h1 className="header">LS Login</h1>
         <p className="description">
           Sign in via magic link with your email below
         </p>

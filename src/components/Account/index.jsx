@@ -35,7 +35,7 @@ export const Account = () => {
       {loading ? (
         "Saving ..."
       ) : (
-        <>
+        <div>
           <Header />
 
           <form onSubmit={updateProfile} className="form-widget">
@@ -64,9 +64,9 @@ export const Account = () => {
                     onChange={(e) => setWebsite(e.target.value)}
                   />
                 </div>
-                <div>
+                <div style={{ display: "flex", justifyContent: "center" }}>
                   <span>
-                    <button onChange={() => setUpdate(!update)}>Confirm</button>
+                    <button>Confirm</button>
                   </span>
                 </div>
               </>
@@ -74,7 +74,6 @@ export const Account = () => {
               <>
                 <div>
                   <label htmlFor="username">Name</label>
-
                   {username}
                 </div>
                 <div>
@@ -95,7 +94,7 @@ export const Account = () => {
             </div>
             <ReturnButton />
           </form>
-        </>
+        </div>
       )}
     </div>
   );

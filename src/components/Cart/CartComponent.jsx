@@ -88,18 +88,18 @@ export const Cart = () => {
             />
           ))}
         </ul>
-        <div className="total">
+        <div className="total li">
           {cart.length > 1 ? (
             <span>
-              <strong>Total Price: {total}</strong>
+              <strong>Total Price: ${total}</strong>
             </span>
           ) : (
             ""
           )}
+          <button onClick={() => clearCart()}>
+            <ClearCartIcon />
+          </button>
         </div>
-        <button onClick={() => clearCart()}>
-          <ClearCartIcon />
-        </button>
       </aside>
     </>
   );

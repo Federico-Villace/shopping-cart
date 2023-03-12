@@ -3,8 +3,9 @@ import { useState, CSSProperties } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const override: CSSProperties = {
-  display: "block",
+  display: "flex",
   margin: "0 auto",
+  justifyContent: "center",
 };
 
 export const Spinner = () => {
