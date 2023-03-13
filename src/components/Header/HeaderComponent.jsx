@@ -23,7 +23,6 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-      <h1>LS Technologies 🛒</h1>
     </header>
   );
 };

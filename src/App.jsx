@@ -6,6 +6,7 @@ import { Cart } from "./components/Cart/CartComponent";
 import { CartProvider } from "./context/cart";
 import { useProducts } from "./hooks/useProducts";
 import { Spinner } from "./components/Spinner";
+import { Title } from "./components/Title";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -30,6 +31,7 @@ function App() {
   return (
     <CartProvider>
       <Header />
+      <Title />
       <Cart />
       {products?.length === 0 ? (
         <Spinner />
