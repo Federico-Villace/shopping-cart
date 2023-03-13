@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
 import { useProducts } from "../../hooks/useProducts";
 
 export const Title = () => {
-  const { getProduct, setInput, input } = useProducts();
+  const { getProduct } = useProducts();
+  const [input, setInput] = useState("");
 
   const handleChange = (e) => {
     setInput(e);
@@ -16,7 +18,7 @@ export const Title = () => {
         onChange={(e) => handleChange(e.target.value)}
         placeholder="Iphone X, Macbook Pro, ... "
       />
-      <button onClick={getProduct}>Search</button>
+      <button onClick={() => getProduct(input)}>Search</button>
     </div>
   );
 };

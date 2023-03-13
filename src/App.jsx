@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Header } from "./components/Header/HeaderComponent";
 import { Products } from "./components/Products/ProductsComponent";
 import { useFilters } from "./hooks/useFilters";
@@ -9,24 +9,9 @@ import { Spinner } from "./components/Spinner";
 import { Title } from "./components/Title";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const { webProducts, getElements } = useProducts();
+  const { products } = useProducts();
   const { filteredProducts } = useFilters();
   const filterProducts = filteredProducts(products);
-
-  useEffect(() => {
-    if (webProducts?.length === 0) {
-      getElements();
-    }
-    getProducts();
-  }, [webProducts]);
-
-  const getProducts = () => {
-    if (webProducts?.length > 0) {
-      const prods = { products: [webProducts] };
-      setProducts(prods.products[0]);
-    }
-  };
 
   return (
     <CartProvider>
