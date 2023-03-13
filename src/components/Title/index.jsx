@@ -1,17 +1,9 @@
-import { useState } from "react";
+import { useProducts } from "../../hooks/useProducts";
 
 export const Title = () => {
-  const [product, setProduct] = useState({});
-  const [input, setInput] = useState("");
-
-  const getProduct = () => {
-    fetch(`https://dummyjson.com/products/search?q=${input}`)
-      .then((res) => res.json())
-      .then(console.log);
-  };
+  const { getProduct, setInput, input } = useProducts();
 
   const handleChange = (e) => {
-    setProduct(e);
     setInput(e);
   };
 
