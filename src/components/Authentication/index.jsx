@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
+import "./auth.css";
 
 export function Auth() {
   const [loading, setLoading] = useState(false);
@@ -20,9 +21,9 @@ export function Auth() {
   };
 
   return (
-    <div className="row flex-center flex">
+    <div className="row flex-center flex auth-card">
       <div className="col-6 form-widget" aria-live="polite">
-        <h1 className="header">LS Login</h1>
+        <h1 className="header">LS Technologies Login</h1>
         <p className="description" style={{ textAlign: "center" }}>
           Sign in via magic link with your email below
         </p>

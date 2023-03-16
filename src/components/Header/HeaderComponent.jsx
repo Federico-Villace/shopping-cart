@@ -18,6 +18,9 @@ export const Header = () => {
               <UserIcon />
             </Link>
           </li>
+          <li className="header-li">
+            <label>logout</label>
+          </li>
           <li>
             <LogoutButton />
           </li>

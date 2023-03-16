@@ -13,24 +13,13 @@ function App() {
   const { filteredProducts } = useFilters();
   const filterProducts = filteredProducts(products);
   const newProdFilter = filteredProducts(product);
-  const [prod, setProd] = useState([]);
 
   useEffect(() => {
     if (product.length > 0) {
       setProd(product);
-      if (prod) {
-        const newProd = filteredProducts(product);
-        setProd(newProd);
-      }
     }
     console.log(newProdFilter);
   }, [product]);
-
-  useEffect(() => {
-    if (product.length === 0) {
-      setProd(filterProducts);
-    }
-  }, []);
 
   return (
     <CartProvider>

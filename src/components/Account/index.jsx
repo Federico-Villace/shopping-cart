@@ -4,6 +4,7 @@ import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
 import { Header } from "../Header/HeaderComponent";
 import { ReturnButton } from "../Buttons/ReturnButton";
+import "./account.css";
 
 export const Account = () => {
   const [update, setUpdate] = useState(false);
@@ -37,63 +38,67 @@ export const Account = () => {
       ) : (
         <div>
           <Header />
-
-          <form onSubmit={updateProfile} className="form-widget">
+          <div className="profile-card">
             <div>
-              <label>Email</label>
-              {session.user.email}
+              <h2>Account Profile</h2>
             </div>
-            {update ? (
-              <>
-                <div>
-                  <label htmlFor="username">Name</label>
+            <form onSubmit={updateProfile} className="form-widget">
+              <div>
+                <label>Email</label>
+                {session.user.email}
+              </div>
+              {update ? (
+                <>
+                  <div>
+                    <label htmlFor="username">Name</label>
 
-                  <input
-                    id="username"
-                    type="text"
-                    value={username || ""}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="website">Website</label>
-                  <input
-                    id="website"
-                    type="url"
-                    value={website || ""}
-                    onChange={(e) => setWebsite(e.target.value)}
-                  />
-                </div>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <span>
-                    <button>Confirm</button>
-                  </span>
-                </div>
-              </>
-            ) : (
-              <>
-                <div>
-                  <label htmlFor="username">Name</label>
-                  {username}
-                </div>
-                <div>
-                  <label htmlFor="website">Website</label>
-                  {website}
-                </div>
-              </>
-            )}
+                    <input
+                      id="username"
+                      type="text"
+                      value={username || ""}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      type="url"
+                      value={website || ""}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <span>
+                      <button>Confirm</button>
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <label htmlFor="username">Name</label>
+                    {username}
+                  </div>
+                  <div>
+                    <label htmlFor="website">Website</label>
+                    {website}
+                  </div>
+                </>
+              )}
 
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <button
-                className="button primary"
-                disabled={loading}
-                onClick={(e) => handleButtonUpdate(e)}
-              >
-                Update profile
-              </button>
-            </div>
-            <ReturnButton />
-          </form>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <button
+                  className="button primary"
+                  disabled={loading}
+                  onClick={(e) => handleButtonUpdate(e)}
+                >
+                  Update profile
+                </button>
+              </div>
+              <ReturnButton />
+            </form>
+          </div>
         </div>
       )}
     </div>
