@@ -21,7 +21,7 @@ export function Auth() {
   };
 
   return (
-    <div className="row flex-center flex auth-card">
+    <div className="row flex-center flex auth-card body">
       <div className="col-6 form-widget" aria-live="polite">
         <h1 className="header">LS Technologies Login</h1>
         <p className="description" style={{ textAlign: "center" }}>
@@ -39,7 +39,9 @@ export function Auth() {
               alignItems: "center",
             }}
           >
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" style={{ color: "white" }}>
+              Email
+            </label>
             <input
               id="email"
               className="inputField"
