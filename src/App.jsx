@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "./components/Header/HeaderComponent";
 import { Products } from "./components/Products/ProductsComponent";
 import { useFilters } from "./hooks/useFilters";
@@ -9,17 +9,38 @@ import { Spinner } from "./components/Spinner";
 import { Title } from "./components/Title";
 
 function App() {
-  const { products } = useProducts();
+  const { products, product, getProduct } = useProducts();
   const { filteredProducts } = useFilters();
   const filterProducts = filteredProducts(products);
+  const newProdFilter = filteredProducts(product);
+  const [prod, setProd] = useState([]);
+
+  useEffect(() => {
+    if (product.length > 0) {
+      setProd(product);
+      if (prod) {
+        const newProd = filteredProducts(product);
+        setProd(newProd);
+      }
+    }
+    console.log(newProdFilter);
+  }, [product]);
+
+  useEffect(() => {
+    if (product.length === 0) {
+      setProd(filterProducts);
+    }
+  }, []);
 
   return (
     <CartProvider>
       <Header />
-      <Title />
+      <Title getProduct={getProduct} />
       <Cart />
-      {products?.length === 0 ? (
+      {products?.length === 0 && product.length === 0 ? (
         <Spinner />
+      ) : newProdFilter.length > 0 ? (
+        <Products products={newProdFilter} />
       ) : (
         <Products products={filterProducts} />
       )}

@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import { useProducts } from "../../hooks/useProducts";
+import { useState } from "react";
 
-export const Title = () => {
-  const { getProduct } = useProducts();
+export const Title = ({ getProduct }) => {
   const [input, setInput] = useState("");
 
   const handleChange = (e) => {

@@ -11,6 +11,9 @@ export const useProducts = () => {
     if (webProducts?.length === 0) {
       getElements();
     }
+  }, []);
+
+  useEffect(() => {
     getProducts();
   }, [webProducts, product]);
 
@@ -19,15 +22,7 @@ export const useProducts = () => {
       const prods = { products: [webProducts] };
       setProducts(prods.products[0]);
     }
-    if (product.length > 0) {
-      setProducts(product);
-    }
   };
-
-  useEffect(() => {
-    console.log(products);
-    //  console.log(products);
-  }, [products, product]);
 
   const getElements = () => {
     return fetch(URL)
@@ -43,6 +38,8 @@ export const useProducts = () => {
 
   return {
     getProduct,
+    getProducts,
     products,
+    product,
   };
 };
