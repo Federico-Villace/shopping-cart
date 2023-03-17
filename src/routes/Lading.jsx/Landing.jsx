@@ -6,14 +6,14 @@ export const Landing = () => {
     <div className="background">
       <ul className="ul">
         <li>
-          <h1>Shopping Never been so easy</h1>
+          <h1>Shopping Never been so easy!</h1>
         </li>
-        <li>
+        <div>
           <h4>
             Find the product that best suits you and get it in your home with
             the fastest shipment.
           </h4>
-        </li>
+        </div>
         <li>
           <Link to={"/"}>
             <button>Shop now!</button>

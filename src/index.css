@@ -429,4 +429,12 @@ button.primary,
 
 h1 {
   text-align: center;
+  font-weight: 400;
+  color: white;
+  font-size: 40px;
+}
+
+h4 {
+  color: #afb2f9;
+  font-weight: 400;
 }
