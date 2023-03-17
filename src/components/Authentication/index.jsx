@@ -30,15 +30,7 @@ export function Auth() {
         {loading ? (
           "Sending magic link..."
         ) : (
-          <form
-            onSubmit={handleLogin}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <form className="form" onSubmit={handleLogin}>
             <label htmlFor="email" style={{ color: "white" }}>
               Email
             </label>

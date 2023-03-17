@@ -14,13 +14,6 @@ function App() {
   const filterProducts = filteredProducts(products);
   const newProdFilter = filteredProducts(product);
 
-  useEffect(() => {
-    if (product.length > 0) {
-      setProd(product);
-    }
-    console.log(newProdFilter);
-  }, [product]);
-
   return (
     <CartProvider>
       <Header />
