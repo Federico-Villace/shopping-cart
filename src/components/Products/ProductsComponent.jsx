@@ -9,13 +9,17 @@ export function Products({ products }) {
     return cart.some((item) => item.id === product.id);
   };
 
+  const goToProduct = () => {
+    console.log("hola");
+  };
+
   return (
     <main className="products">
       <ul>
         {products.map((prod) => {
           const isProdInCart = chechProductInCart(prod);
           return (
-            <li key={prod.id}>
+            <li key={prod.id} onClick={goToProduct}>
               <img src={prod.thumbnail} alt={prod.title} />
               <div>
                 <strong>{prod.title} </strong>- ${prod.price}

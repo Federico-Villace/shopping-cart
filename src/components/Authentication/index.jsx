@@ -28,7 +28,9 @@ export function Auth() {
           Sign in via magic link with your email below
         </p>
         {loading ? (
-          <p>"Sending magic link..."</p>
+          <>
+            <p style={{ minHeight: "100px" }}>"Sending magic link..."</p>
+          </>
         ) : (
           <form className="form" onSubmit={handleLogin}>
             <label htmlFor="email" style={{ color: "white" }}>

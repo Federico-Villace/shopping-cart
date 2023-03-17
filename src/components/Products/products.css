@@ -22,6 +22,12 @@
   padding: 1rem;
 }
 
+.products li:hover {
+  border: solid;
+  border-color: white;
+  cursor: pointer;
+}
+
 .products h3 {
   margin: 0;
 }
