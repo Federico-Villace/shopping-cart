@@ -20,3 +20,15 @@
   width: 50%;
   height: fit-content;
 }
+
+.label {
+  cursor: pointer;
+}
+
+.label:hover {
+  color: white;
+}
+
+.label:active {
+  color: azure;
+}

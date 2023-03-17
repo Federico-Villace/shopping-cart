@@ -3,14 +3,15 @@ import ReactDOM from "react-dom/client";
 import { FiltersProvider } from "./context/filters";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import { Root } from "./routes/Root/Root";
 import { Account } from "./components/Account";
 import { Landing } from "./routes/Lading.jsx/Landing";
+import { Auth } from "./components/Authentication";
+import { HomePage } from "./routes/HomePage/HomePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Landing />,
   },
 
   {
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
     element: <Account />,
   },
   {
-    path: "/Landing",
-    element: <Landing />,
+    path: "/HomePage",
+    element: <HomePage />,
+  },
+  {
+    path: "/Authorization",
+    element: <Auth />,
   },
 ]);
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAccount } from "../../hooks/useAccount";
 import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
@@ -10,19 +10,8 @@ export const Account = () => {
   const [update, setUpdate] = useState(false);
   const { session } = useSession();
 
-  const {
-    username,
-    setUsername,
-    website,
-    setWebsite,
-    loading,
-    updateProfile,
-    getProfile,
-  } = useAccount();
-
-  useEffect(() => {
-    getProfile();
-  }, [session]);
+  const { username, setUsername, website, setWebsite, loading, updateProfile } =
+    useAccount();
 
   const handleButtonUpdate = (e) => {
     e.preventDefault();

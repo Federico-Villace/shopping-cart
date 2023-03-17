@@ -15,7 +15,7 @@ export const Landing = () => {
           </h4>
         </div>
         <li>
-          <Link to={"/"}>
+          <Link to={"/HomePage"}>
             <button>Shop now!</button>
           </Link>
         </li>

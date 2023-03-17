@@ -28,7 +28,7 @@ export function Auth() {
           Sign in via magic link with your email below
         </p>
         {loading ? (
-          "Sending magic link..."
+          <p>"Sending magic link..."</p>
         ) : (
           <form className="form" onSubmit={handleLogin}>
             <label htmlFor="email" style={{ color: "white" }}>

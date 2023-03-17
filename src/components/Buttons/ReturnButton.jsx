@@ -4,7 +4,7 @@ export const ReturnButton = () => {
   const navigate = useNavigate();
 
   const handleReturn = () => {
-    return navigate("/");
+    return navigate("/HomePage");
   };
   return (
     <button type="button" className="button" onClick={handleReturn}>
