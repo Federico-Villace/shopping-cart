@@ -7,6 +7,7 @@ import { Account } from "./components/Account";
 import { Landing } from "./routes/Lading.jsx/Landing";
 import { Auth } from "./components/Authentication";
 import { HomePage } from "./routes/HomePage/HomePage";
+import { Product } from "./components/Product";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/Authorization",
     element: <Auth />,
+  },
+  {
+    path: "/Product",
+    element: <Product />,
   },
 ]);
 

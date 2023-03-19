@@ -3,6 +3,7 @@ import { Products } from "./components/Products/ProductsComponent";
 import { useFilters } from "./hooks/useFilters";
 import { Cart } from "./components/Cart/CartComponent";
 import { CartProvider } from "./context/cart";
+import { Filters } from "./components/Filters/Filters";
 import { useProducts } from "./hooks/useProducts";
 import { useSession } from "./hooks/useSession";
 import { Spinner } from "./components/Spinner";
@@ -19,6 +20,7 @@ function App() {
     <CartProvider>
       <Header session={session} />
       <Title getProduct={getProduct} />
+      <Filters />
       <Cart />
       {products?.length === 0 && product.length === 0 ? (
         <Spinner />

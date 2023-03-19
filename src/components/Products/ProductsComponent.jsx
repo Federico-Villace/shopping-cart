@@ -8,9 +8,9 @@ export function Products({ products }) {
   const chechProductInCart = (product) => {
     return cart.some((item) => item.id === product.id);
   };
-
-  const goToProduct = () => {
+  const goToProduct = (prod) => {
     console.log("hola");
+    console.log(prod);
   };
 
   return (
@@ -19,7 +19,7 @@ export function Products({ products }) {
         {products.map((prod) => {
           const isProdInCart = chechProductInCart(prod);
           return (
-            <li key={prod.id} onClick={goToProduct}>
+            <li key={prod.id} onClick={() => goToProduct(prod)}>
               <img src={prod.thumbnail} alt={prod.title} />
               <div>
                 <strong>{prod.title} </strong>- ${prod.price}
