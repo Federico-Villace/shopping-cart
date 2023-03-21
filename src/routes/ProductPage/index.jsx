@@ -3,8 +3,10 @@ import { Cart } from "../../components/Cart/CartComponent";
 import { Header } from "../../components/Header/HeaderComponent";
 import { useProducts } from "../../hooks/useProducts";
 import { useLocation } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
 import { Spinner } from "../../components/Spinner";
 import "./Product.css";
+import { AddToCart } from "./AddToCart";
 
 export const ProductPage = () => {
   const { product } = useProducts();
@@ -13,11 +15,11 @@ export const ProductPage = () => {
   const { id, title, description, price, thumbnail } = state;
 
   return (
-    <>
+    <CartProvider>
       {!product.length === 0 ? (
         <Spinner />
       ) : (
-        <CartProvider>
+        <>
           <Cart />
           <div>
             <div className="header-container">
@@ -30,19 +32,19 @@ export const ProductPage = () => {
                 <img src={thumbnail} alt="" className="product-image" />
               </div>
               <div className="product-details">
-                <h2 className="product-name">{title}</h2>
+                <div className="product-details-header">
+                  <h2 className="product-name">{title}</h2>
+                  <p className="product-price">Price ${price}</p>
+                </div>
                 <div className="product-description">
                   <p>{description}</p>
                 </div>
-                <div className="product-price-container">
-                  <p className="product-price">Price ${price}</p>
-                  <button className="product-button">Add to Cart</button>
-                </div>
+                <AddToCart product={state} />
               </div>
             </div>
           </div>
-        </CartProvider>
+        </>
       )}
-    </>
+    </CartProvider>
   );
 };

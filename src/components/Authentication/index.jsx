@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import "./auth.css";
+const redirectTo = "/Account";
 
 export function Auth() {
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,10 @@ export function Auth() {
 
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signInWithOtp({ email });
+      const { error } = await supabase.auth.signInWithOtp(
+        { email },
+        { redirectTo }
+      );
       if (error) throw error;
     } catch (error) {
       alert(error.error_description || error.message);

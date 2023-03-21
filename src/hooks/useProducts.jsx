@@ -7,7 +7,6 @@ export const useProducts = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
-  const [productSelected, setProductSelected] = useState([]);
 
   useEffect(() => {
     getElements();
@@ -38,7 +37,6 @@ export const useProducts = () => {
     getProduct,
     products,
     product,
-    productSelected,
     getSelectedProduct,
   };
 };
