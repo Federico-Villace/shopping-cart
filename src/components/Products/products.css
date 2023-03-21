@@ -20,11 +20,13 @@
   background: #111;
   color: #fff;
   padding: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .products li:hover {
+  background-color: #333333;
   border: solid;
-  border-color: white;
+  border-color: #969bf6;
   cursor: pointer;
 }
 

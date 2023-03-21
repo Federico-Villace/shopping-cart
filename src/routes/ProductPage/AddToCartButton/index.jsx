@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useCart } from "../../../hooks/useCart";
 
-export const AddToCart = ({ product }) => {
+export const AddToCartButton = ({ product }) => {
   const { cart, addToCart, removeFromCart } = useCart();
 
   const chechProductInCart = (product) => {
@@ -22,7 +22,7 @@ export const AddToCart = ({ product }) => {
           isProdInCart ? removeFromCart(product) : addToCart(product)
         }
       >
-        Add to Cart
+        {isProdInCart ? " Remove from cart " : "Add to Cart"}
       </button>
     </div>
   );

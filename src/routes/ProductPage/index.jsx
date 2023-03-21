@@ -1,12 +1,12 @@
+import { Link } from "react-router-dom";
 import { CartProvider } from "../../context/cart";
 import { Cart } from "../../components/Cart/CartComponent";
 import { Header } from "../../components/Header/HeaderComponent";
 import { useProducts } from "../../hooks/useProducts";
 import { useLocation } from "react-router-dom";
-import { useCart } from "../../hooks/useCart";
 import { Spinner } from "../../components/Spinner";
+import { AddToCartButton } from "./AddToCartButton";
 import "./Product.css";
-import { AddToCart } from "./AddToCart";
 
 export const ProductPage = () => {
   const { product } = useProducts();
@@ -20,12 +20,17 @@ export const ProductPage = () => {
         <Spinner />
       ) : (
         <>
-          <Cart />
           <div>
             <div className="header-container">
+              <div>
+                <Link to={"/HomePage"}>
+                  <button>return ←</button>
+                </Link>
+              </div>
               <div className="product-header">
                 <Header />
               </div>
+              <Cart />
             </div>
             <div className="product-page">
               <div className="product-image-container">
@@ -39,7 +44,7 @@ export const ProductPage = () => {
                 <div className="product-description">
                   <p>{description}</p>
                 </div>
-                <AddToCart product={state} />
+                <AddToCartButton product={state} />
               </div>
             </div>
           </div>
