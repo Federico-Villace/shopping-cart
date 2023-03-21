@@ -9,8 +9,8 @@ import "./Product.css";
 export const ProductPage = () => {
   const { product } = useProducts();
   const location = useLocation();
-
-  console.log(location.state);
+  const state = location.state;
+  const { id, title, description, price, thumbnail } = state;
 
   return (
     <>
@@ -27,19 +27,15 @@ export const ProductPage = () => {
             </div>
             <div className="product-page">
               <div className="product-image-container">
-                <img
-                  src="/background/MacbookBackground.jpg"
-                  alt=""
-                  className="product-image"
-                />
+                <img src={thumbnail} alt="" className="product-image" />
               </div>
               <div className="product-details">
-                <h2 className="product-name">Title</h2>
+                <h2 className="product-name">{title}</h2>
                 <div className="product-description">
-                  <p>description</p>
+                  <p>{description}</p>
                 </div>
                 <div className="product-price-container">
-                  <p className="product-price">Price $1000</p>
+                  <p className="product-price">Price ${price}</p>
                   <button className="product-button">Add to Cart</button>
                 </div>
               </div>

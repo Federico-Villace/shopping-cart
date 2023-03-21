@@ -9,10 +9,9 @@ export const useProducts = () => {
   const [product, setProduct] = useState([]);
   const [productSelected, setProductSelected] = useState([]);
 
-  console.log(product);
   useEffect(() => {
     getElements();
-  }, []);
+  }, [product]);
 
   const getElements = () => {
     return fetch(URL)
@@ -23,7 +22,7 @@ export const useProducts = () => {
   const getProduct = (input) => {
     return fetch(`${URL}/search?q=${input}`)
       .then((res) => res.json())
-      .then((data) => setProductSelected(data.products));
+      .then((data) => setProduct(data.products));
   };
 
   const getSelectedProduct = (prod) => {
