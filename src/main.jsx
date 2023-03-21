@@ -4,10 +4,10 @@ import { FiltersProvider } from "./context/filters";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { Account } from "./components/Account";
-import { Landing } from "./routes/Lading.jsx/Landing";
+import { Landing } from "./routes/Landing/Landing";
 import { Auth } from "./components/Authentication";
 import { HomePage } from "./routes/HomePage/HomePage";
-import { Product } from "./components/Product";
+import { ProductPage } from "./routes/ProductPage";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Product",
-    element: <Product />,
+    element: <ProductPage />,
   },
 ]);
 
