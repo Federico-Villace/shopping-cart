@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Title.css";
 
 export const Title = ({ getProduct }) => {
   const [input, setInput] = useState("");

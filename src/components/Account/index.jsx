@@ -21,7 +21,7 @@ export const Account = () => {
   return !session ? (
     <Spinner />
   ) : (
-    <div>
+    <div className="container">
       {loading ? (
         "Saving ..."
       ) : (

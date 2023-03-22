@@ -9,3 +9,12 @@
   width: 50%;
   height: fit-content;
 }
+
+@media only screen and (max-width: 600px) {
+  .title-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
