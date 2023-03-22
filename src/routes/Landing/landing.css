@@ -4,6 +4,7 @@
   background-size: cover;
   width: 100%;
   height: 100vh;
+  text-align: center;
 }
 
 .ul {
@@ -11,4 +12,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 600px) {
 }
