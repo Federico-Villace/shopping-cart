@@ -25,10 +25,10 @@ export function Auth() {
   };
 
   return (
-    <div className="row flex-center flex auth-card body">
-      <div className="col-6 form-widget" aria-live="polite">
-        <h1 className="header">LS Technologies Login</h1>
-        <p className="description" style={{ textAlign: "center" }}>
+    <div className="auth-card body">
+      <div className="" aria-live="polite">
+        <h1 className="">LS Technologies Login</h1>
+        <p className="" style={{ textAlign: "center" }}>
           Sign in via magic link with your email below
         </p>
         {loading ? (
@@ -42,13 +42,13 @@ export function Auth() {
             </label>
             <input
               id="email"
-              className="inputField"
+              className=""
               type="email"
               placeholder="Your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="button block" aria-live="polite">
+            <button className="" aria-live="polite">
               Send magic link
             </button>
           </form>
