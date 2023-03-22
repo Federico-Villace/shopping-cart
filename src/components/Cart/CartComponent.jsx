@@ -95,6 +95,7 @@ export const Cart = () => {
             ""
           )}
           <button onClick={() => clearCart()}>
+            clear cart
             <ClearCartIcon />
           </button>
         </div>
