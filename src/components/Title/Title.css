@@ -6,6 +6,7 @@
 }
 
 .title-font-size {
+  cursor: pointer;
   font-size: 30px;
 }
 
