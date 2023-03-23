@@ -11,4 +11,9 @@
     display: flex;
     justify-content: center;
   }
+
+  .select {
+    background-color: black;
+    border-radius: 3px;
+  }
 }

@@ -21,4 +21,9 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  .title-div input {
+    width: 70%;
+    height: fit-content;
+  }
 }

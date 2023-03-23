@@ -14,6 +14,8 @@ export const ProductPage = () => {
   const state = location.state;
   const { id, title, description, price, thumbnail } = state;
 
+  console.log(state);
+
   return (
     <CartProvider>
       {!product.length === 0 ? (
