@@ -10,22 +10,19 @@ import { Spinner } from "./components/Spinner";
 import { Title } from "./components/Title";
 
 function App() {
-  const { products, product, getProduct } = useProducts();
+  const { products, product, getProduct, updateProducts } = useProducts();
   const { filteredProducts } = useFilters();
   const { session } = useSession();
   const filterProducts = filteredProducts(products);
-  const newProdFilter = filteredProducts(product);
 
   return (
     <CartProvider>
       <Header session={session} />
-      <Title getProduct={getProduct} />
+      <Title getProduct={getProduct} updateProducts={updateProducts} />
       <Filters />
       <Cart />
       {products?.length === 0 && product.length === 0 ? (
         <Spinner />
-      ) : newProdFilter.length > 0 ? (
-        <Products products={newProdFilter} />
       ) : (
         <Products products={filterProducts} />
       )}

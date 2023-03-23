@@ -21,7 +21,7 @@ export const useProducts = () => {
   const getProduct = (input) => {
     return fetch(`${URL}/search?q=${input}`)
       .then((res) => res.json())
-      .then((data) => setProduct(data.products));
+      .then((data) => setProducts(data.products));
   };
 
   const getSelectedProduct = (prod) => {
@@ -33,10 +33,15 @@ export const useProducts = () => {
       });
   };
 
+  const updateProducts = () => {
+    getElements();
+  };
+
   return {
     getProduct,
     products,
     product,
     getSelectedProduct,
+    updateProducts,
   };
 };
