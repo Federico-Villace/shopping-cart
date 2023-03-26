@@ -37,7 +37,7 @@ server.post("/payment", (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://localhost:3000",
+      success: "http://localhost:5173/HomePage",
       failed: "",
       prending: "",
     },

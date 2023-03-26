@@ -1,4 +1,5 @@
 import { useId, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
 import { CartIcon, ClearCartIcon } from "../icons";
 import "./cart.css";
@@ -94,6 +95,9 @@ export const Cart = () => {
           ) : (
             ""
           )}
+          <Link to={"/CheckoutPage"}>
+            <button>Go to Checkout</button>
+          </Link>
           <button onClick={() => clearCart()}>
             clear cart
             <ClearCartIcon />

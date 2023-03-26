@@ -8,6 +8,7 @@ import { Landing } from "./routes/Landing/Landing";
 import { Auth } from "./components/Authentication";
 import { HomePage } from "./routes/HomePage/HomePage";
 import { ProductPage } from "./routes/ProductPage";
+import CheckoutPage from "./routes/CheckoutPage";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/Product",
     element: <ProductPage />,
+  },
+  {
+    path: "/CheckoutPage",
+    element: <CheckoutPage />,
   },
 ]);
 
