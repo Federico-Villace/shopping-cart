@@ -7,14 +7,22 @@ import { useLocation } from "react-router-dom";
 import { Spinner } from "../../components/Spinner";
 import { AddToCartButton } from "./AddToCartButton";
 import "./Product.css";
+import axios from "axios";
 
 export const ProductPage = () => {
   const { product } = useProducts();
   const location = useLocation();
   const state = location.state;
   const { id, title, description, price, thumbnail } = state;
+  const mlProd = {
+    title: title,
+    category: "test",
+    description: description,
+    image: thumbnail,
+    price: price,
+  };
 
-  console.log(state);
+  console.log(mlProd);
 
   return (
     <CartProvider>
@@ -47,6 +55,19 @@ export const ProductPage = () => {
                   <p>{description}</p>
                 </div>
                 <AddToCartButton product={state} />
+                <button
+                  onClick={() =>
+                    axios
+                      .post("http://localhost:3001/payment", mlProd)
+                      .then(
+                        (res) =>
+                          (window.location.href =
+                            res.data.response.body.init_point)
+                      )
+                  }
+                >
+                  Buy it Now!
+                </button>
               </div>
             </div>
           </div>
