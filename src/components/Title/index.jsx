@@ -14,8 +14,8 @@ export const Title = ({ getProduct, updateProducts }) => {
 
   return (
     <div className="title-div">
-      <h2 className="title-font-size" onClick={handleClick}>
-        LS Technologies 🛒
+      <h2 className="title-font" onClick={handleClick}>
+        INIT Technologies 🛒
       </h2>
       <input
         type={"text"}

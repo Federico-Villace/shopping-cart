@@ -5,13 +5,14 @@
   align-items: baseline;
 }
 
-.title-font-size {
+.title-font {
+  font-family: Inconsolata;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .title-div input {
-  width: 50%;
+  width: 40%;
   height: fit-content;
 }
 
@@ -26,5 +27,10 @@
   .title-div input {
     width: 70%;
     height: fit-content;
+  }
+
+  .title-font {
+    text-align: center;
+    padding: 10px;
   }
 }
