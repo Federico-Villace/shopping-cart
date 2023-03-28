@@ -24,10 +24,11 @@ mercadopago.configure({ access_token: process.env.ACCESS_TOKEN });
 
 server.post("/payment", (req, res) => {
   const prod = req.body;
+  console.log(prod);
   let preference = {
     items: [
       {
-        id: 123,
+        id: prod.id,
         title: prod.title,
         currency_id: "ARS",
         picture_url: prod.image,

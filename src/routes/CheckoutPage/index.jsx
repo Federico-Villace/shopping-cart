@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./CheckoutPage.css";
+import axios from "axios";
 
 function CheckoutPage() {
   const prods = JSON.parse(localStorage.getItem("cart"));
   const [products, setProducts] = useState(prods);
-  console.log(prods);
+  const ml = prods.values();
+  console.log(ml);
 
   const totalPrice = products.reduce(
     (total, product) => total + product.price,
@@ -24,7 +26,18 @@ function CheckoutPage() {
         ))}
       </div>
       <p className="total-price">Total: ${totalPrice.toFixed(2)}</p>
-      <button>Buy Order</button>
+      <button
+        onClick={() =>
+          axios
+            .post("http://localhost:3001/payment", products)
+            .then(
+              (res) =>
+                (window.location.href = res.data.response.body.init_point)
+            )
+        }
+      >
+        Buy Order
+      </button>
     </div>
   );
 }
