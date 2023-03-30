@@ -1,0 +1,15 @@
+{
+  "name": "backend-ecommerce",
+  "version": "1.0.0",
+  "description": "eccomerce backend api ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Federico Villace ",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "heroku": "8.0.2"
+  }
+}

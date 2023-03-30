@@ -22,8 +22,6 @@ export const ProductPage = () => {
     price: price,
   };
 
-  console.log(mlProd);
-
   return (
     <CartProvider>
       {!product.length === 0 ? (

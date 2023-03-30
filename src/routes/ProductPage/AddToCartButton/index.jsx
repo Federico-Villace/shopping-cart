@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useCart } from "../../../hooks/useCart";
 
 export const AddToCartButton = ({ product }) => {
@@ -9,10 +8,6 @@ export const AddToCartButton = ({ product }) => {
   };
 
   const isProdInCart = chechProductInCart(product);
-
-  useEffect(() => {
-    console.log(product);
-  }, [product]);
 
   return (
     <div className="product-button-container">

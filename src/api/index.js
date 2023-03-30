@@ -9,17 +9,6 @@ const server = express();
 server.use(express.json());
 server.use(morgan("dev"));
 
-server.use((_req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-  next();
-});
-
 mercadopago.configure({ access_token: process.env.ACCESS_TOKEN });
 
 server.post("/payment", (req, res) => {
@@ -49,6 +38,10 @@ server.post("/payment", (req, res) => {
     .create(preference)
     .then((response) => res.status(200).send({ response }))
     .catch((error) => res.status(400).send({ error: error.message }));
+});
+
+server.get("/testing", (req, res) => {
+  res.send("<h1>hola</h1>");
 });
 
 server.listen(3001, () => {
