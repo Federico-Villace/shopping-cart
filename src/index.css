@@ -70,6 +70,7 @@ body {
   margin: 0;
   font-family: var(--custom-font-family);
   background-color: var(--custom-bg-color);
+  height: 100%;
 }
 
 * {
