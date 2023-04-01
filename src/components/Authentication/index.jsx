@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,6 +8,8 @@ const redirectTo = "/Account";
 export function Auth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const [toastify, setToastify] = useState(false);
+
   const sentMaginLinkMessage = () =>
     toast.success("Magic Link Sent! Checkout your Email", {
       position: "top-right",
@@ -36,6 +38,10 @@ export function Auth() {
     }
   };
 
+  useEffect(() => {
+    setToastify(true);
+  }, [toastify]);
+
   return (
     <div className="auth-card body">
       <div className="" aria-live="polite">
@@ -43,34 +49,30 @@ export function Auth() {
         <p className="" style={{ textAlign: "center" }}>
           Sign in via magic link with your email below
         </p>
-        {loading ? (
+        {loading && (
           <>
             <p style={{ minHeight: "100px" }}>"Sending magic link..."</p>
           </>
-        ) : (
-          (sentMaginLinkMessage(),
-          (
-            <>
-              <ToastContainer />
-              <form className="form" onSubmit={handleLogin}>
-                <label htmlFor="email" style={{ color: "white" }}>
-                  Email
-                </label>
-                <input
-                  id="email"
-                  className=""
-                  type="email"
-                  placeholder="Your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <button className="" aria-live="polite">
-                  Send magic link
-                </button>
-              </form>
-            </>
-          ))
         )}
+        {toastify && <ToastContainer />}
+        <>
+          <form className="form" onSubmit={handleLogin}>
+            <label htmlFor="email" style={{ color: "white" }}>
+              Email
+            </label>
+            <input
+              id="email"
+              className=""
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button className="" aria-live="polite">
+              Send magic link
+            </button>
+          </form>
+        </>
       </div>
     </div>
   );
