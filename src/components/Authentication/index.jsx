@@ -50,9 +50,7 @@ export function Auth() {
           Sign in via magic link with your email below
         </p>
         {loading && (
-          <>
-            <p style={{ minHeight: "100px" }}>"Sending magic link..."</p>
-          </>
+          <p style={{ minHeight: "100px" }}>"Sending magic link..."</p>
         )}
         {toastify && <ToastContainer />}
         <>
