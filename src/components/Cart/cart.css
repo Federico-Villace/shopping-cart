@@ -22,6 +22,14 @@
 .cart li {
   border-bottom: 1px solid #444;
   padding-bottom: 16px;
+  animation: show 200ms 200ms forwards;
+  transform: rotateX(-90deg);
+}
+@keyframes show {
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .cart footer {

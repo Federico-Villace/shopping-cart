@@ -52,22 +52,20 @@ export const Cart = () => {
     }, [price]);
 
     return (
-      <>
-        <li>
-          <img src={thumbnail} alt={title} />
-          <div className="total">
-            <strong>
-              {quantity === 1
-                ? `${title} - $${price}`
-                : `${title} - $${itemTotal}`}
-            </strong>
-          </div>
-          <footer>
-            <small>Qty: {quantity}</small>
-            <button onClick={addToCart}>+</button>
-          </footer>
-        </li>
-      </>
+      <li>
+        <img src={thumbnail} alt={title} />
+        <div className="total">
+          <strong>
+            {quantity === 1
+              ? `${title} - $${price}`
+              : `${title} - $${itemTotal}`}
+          </strong>
+        </div>
+        <footer>
+          <small>Qty: {quantity}</small>
+          <button onClick={addToCart}>+</button>
+        </footer>
+      </li>
     );
   };
 
