@@ -17,7 +17,7 @@ export const Product = ({ product, isProdInCart, onSelected }) => {
         <button
           style={
             isProdInCart
-              ? { backgroundColor: "#f69696" }
+              ? { backgroundColor: "#fb4f4f" }
               : { backgroundColor: "" }
           }
           onClick={() =>

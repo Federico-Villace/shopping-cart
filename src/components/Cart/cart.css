@@ -56,9 +56,27 @@
   scale: 1.1;
 }
 
+.cart-button:active {
+  transition: 0.2s;
+  background: #1df0ff;
+}
+
 .cart-button ~ input:checked ~ .cart {
   height: 100%;
   display: block;
+}
+
+.checkout-button {
+  background: #5de05db4;
+}
+
+.clear-cart-button {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  background: #fb4f4f;
 }
 
 .total {

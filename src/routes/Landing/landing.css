@@ -4,6 +4,8 @@
   background-size: cover;
   width: 100%;
   text-align: center;
+  height: 100vh;
+  height: 100svh;
 }
 
 .ul {
@@ -31,12 +33,6 @@
 
 .button-container {
   margin-bottom: 100px;
-}
-
-button {
-  padding: 15px;
-  margin-left: 5px;
-  margin-right: 5px;
 }
 
 @media only screen and (max-width: 600px) {

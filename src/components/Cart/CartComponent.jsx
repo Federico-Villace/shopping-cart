@@ -96,9 +96,9 @@ export const Cart = () => {
             ""
           )}
           <Link to={"/CheckoutPage"}>
-            <button>Go to Checkout</button>
+            <button className="checkout-button">Go to Checkout</button>
           </Link>
-          <button onClick={() => clearCart()}>
+          <button className="clear-cart-button" onClick={() => clearCart()}>
             clear cart
             <ClearCartIcon />
           </button>
