@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import {
+  sentMaginLinkMessage,
+  sendingMagicLinkMessage,
+  failedMagicLink,
+} from "../../utils/Toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
 const redirectTo = "/Account";
@@ -10,20 +15,8 @@ export function Auth() {
   const [email, setEmail] = useState("");
   const [toastify, setToastify] = useState(false);
 
-  const sentMaginLinkMessage = () =>
-    toast.success("Magic Link Sent! Checkout your Email", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
-    });
-
   const handleLogin = async (e) => {
     e.preventDefault();
-    sentMaginLinkMessage();
     try {
       setLoading(true);
       const { error } = await supabase.auth.signInWithOtp(
@@ -31,8 +24,14 @@ export function Auth() {
         { redirectTo }
       );
       if (error) throw error;
+      if (!error) {
+        sentMaginLinkMessage();
+      }
     } catch (error) {
-      alert(error.error_description || error.message);
+      if (error) {
+        failedMagicLink();
+      }
+      console.log(error.error_description || error.message);
     } finally {
       setLoading(false);
     }
@@ -49,9 +48,7 @@ export function Auth() {
         <p className="" style={{ textAlign: "center" }}>
           Sign in via magic link with your email below
         </p>
-        {loading && (
-          <p style={{ minHeight: "100px" }}>"Sending magic link..."</p>
-        )}
+        {loading && <ToastContainer />}
         {toastify && <ToastContainer />}
         <>
           <form className="form" onSubmit={handleLogin}>
