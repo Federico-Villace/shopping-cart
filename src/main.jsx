@@ -9,6 +9,7 @@ import { Auth } from "./components/Authentication";
 import { HomePage } from "./routes/HomePage/HomePage";
 import { ProductPage } from "./routes/ProductPage";
 import CheckoutPage from "./routes/CheckoutPage";
+import { AfterPurchase } from "./routes/AfterPurchase";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/CheckoutPage",
     element: <CheckoutPage />,
+  },
+  {
+    path: "/AfterPurchase",
+    element: <AfterPurchase />,
   },
 ]);
 

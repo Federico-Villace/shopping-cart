@@ -14,13 +14,16 @@ export const ProductPage = () => {
   const location = useLocation();
   const state = location.state;
   const { id, title, description, price, thumbnail } = state;
-  const mlProd = {
-    title: title,
-    category: "test",
-    description: description,
-    image: thumbnail,
-    price: price,
-  };
+  const mlProd = [
+    {
+      title: title,
+      category: "test",
+      description: description,
+      image: thumbnail,
+      unit_price: price,
+      quantity: 1,
+    },
+  ];
 
   return (
     <CartProvider>

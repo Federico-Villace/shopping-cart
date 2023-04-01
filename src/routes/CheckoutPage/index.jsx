@@ -4,9 +4,25 @@ import axios from "axios";
 
 function CheckoutPage() {
   const prods = JSON.parse(localStorage.getItem("cart"));
-  const [products, setProducts] = useState(prods);
-  const ml = prods.values();
-  console.log(ml);
+  const [products] = useState(prods);
+
+  const formattedProducts = products.map(
+    ({
+      title,
+      category,
+      description,
+      thumbnail: image,
+      price: unit_price,
+      quantity,
+    }) => ({
+      title,
+      category,
+      description,
+      image,
+      unit_price,
+      quantity,
+    })
+  );
 
   const totalPrice = products.reduce(
     (total, product) => total + product.price,
@@ -29,7 +45,7 @@ function CheckoutPage() {
       <button
         onClick={() =>
           axios
-            .post("http://localhost:3001/payment", products)
+            .post("http://localhost:3001/payment", formattedProducts)
             .then(
               (res) =>
                 (window.location.href = res.data.response.body.init_point)
