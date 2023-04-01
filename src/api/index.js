@@ -20,6 +20,9 @@ const allowedOrigins = [
   "https://shopping-cart-black-beta.vercel.app",
   "https://shopping-cart-black-beta.vercel.app/HomePage",
   "https://shopping-cart-black-beta.vercel.app/Product",
+  "https://shopping-cart-git-feature-mercadolibre-api-federico-villace.vercel.app/HomePage",
+  "https://shopping-cart-git-feature-mercadolibre-api-federico-villace.vercel.app",
+  "https://shopping-cart-git-feature-mercadolibre-api-federico-villace.vercel.app/Product",
 ];
 
 server.use((req, res, next) => {
