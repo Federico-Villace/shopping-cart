@@ -4,8 +4,10 @@
   border-left: none;
   border-right: none;
   border-bottom: none;
+  border-radius: 8px;
   padding: 20px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .div {
