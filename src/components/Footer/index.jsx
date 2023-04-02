@@ -4,7 +4,7 @@ export const Footer = () => {
     <div className="container container-box">
       <footer>
         <div className="div">
-          <ul>
+          <ul className="ul">
             <li>
               <a
                 href="https://www.linkedin.com/in/federico-villace"

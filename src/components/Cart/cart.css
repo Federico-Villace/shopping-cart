@@ -8,6 +8,9 @@
   width: 200px;
   overflow-y: scroll;
   text-align: center;
+  transition: 2s;
+  animation: show 200ms 200ms both;
+  transform: rotateX(-90deg);
 }
 
 .cart::-webkit-scrollbar {
