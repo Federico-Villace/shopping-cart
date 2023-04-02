@@ -1,0 +1,35 @@
+.container-box {
+  border: solid;
+  border-color: antiquewhite;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+}
+
+li {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7c83fa;
+  transition: 0.2s;
+}
