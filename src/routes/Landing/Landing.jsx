@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./landing.css";
 
 export const Landing = () => {
+  useEffect(() => {
+    () => window.reload();
+  }, []);
+
   return (
     <div className="background">
       <ul className="ul">

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { failedMagicLink } from "../../utils/Toastify";
+import { notUserFound } from "../../utils/Toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "../../hooks/useSession";
 import "./CheckoutPage.css";
 import axios from "axios";
 
 function CheckoutPage() {
   const prods = JSON.parse(localStorage.getItem("cart"));
   const [products] = useState(prods);
+  const { session } = useSession();
 
   const formattedProducts = products.map(
     ({
@@ -32,6 +34,18 @@ function CheckoutPage() {
     0
   );
 
+  const handleClick = () => {
+    if (session === null) {
+      notUserFound();
+    } else {
+      axios
+        .post("http://localhost:3001/payment", formattedProducts)
+        .then(
+          (res) => (window.location.href = res.data.response.body.init_point)
+        );
+    }
+  };
+
   return (
     <div className="checkout-container">
       <h2 className="checkout-title">Checkout Products</h2>
@@ -45,18 +59,8 @@ function CheckoutPage() {
         ))}
       </div>
       <p className="total-price">Total: ${totalPrice.toFixed(2)}</p>
-      <button
-        onClick={() =>
-          axios
-            .post("http://localhost:3001/payment", formattedProducts)
-            .then(
-              (res) =>
-                (window.location.href = res.data.response.body.init_point)
-            )
-        }
-      >
-        Buy Order
-      </button>
+      <button onClick={handleClick}>Buy Order</button>
+      <ToastContainer />
     </div>
   );
 }
