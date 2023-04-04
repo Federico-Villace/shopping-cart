@@ -31,7 +31,12 @@ export const Account = () => {
             <div>
               <h2>Account Profile</h2>
             </div>
-            <form onSubmit={updateProfile} className="form-widget">
+            <form
+              onSubmit={() => {
+                updateProfile(), setUpdate(!update);
+              }}
+              className="form-widget"
+            >
               <div>
                 <label>Email</label>
                 {session.user.email}
