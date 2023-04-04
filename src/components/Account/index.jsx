@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAccount } from "../../hooks/useAccount";
 import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
@@ -7,11 +7,18 @@ import { ReturnButton } from "../Buttons/ReturnButton";
 import "./account.css";
 
 export const Account = () => {
-  const [update, setUpdate] = useState(false);
   const { session } = useSession();
 
-  const { username, setUsername, website, setWebsite, loading, updateProfile } =
-    useAccount();
+  const {
+    username,
+    setUsername,
+    website,
+    setWebsite,
+    loading,
+    updateProfile,
+    update,
+    setUpdate,
+  } = useAccount();
 
   const handleButtonUpdate = (e) => {
     e.preventDefault();
@@ -31,16 +38,7 @@ export const Account = () => {
             <div>
               <h2>Account Profile</h2>
             </div>
-            <form
-              onSubmit={() => {
-                updateProfile(),
-                  () => {
-                    e.preventDefault();
-                    setUpdate(!update);
-                  };
-              }}
-              className="form-widget"
-            >
+            <form onSubmit={updateProfile} className="form-widget">
               <div>
                 <label>Email</label>
                 {session.user.email}

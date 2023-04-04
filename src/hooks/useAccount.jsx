@@ -4,7 +4,7 @@ import { useSession } from "./useSession";
 
 export const useAccount = () => {
   const { session } = useSession();
-
+  const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
@@ -64,6 +64,7 @@ export const useAccount = () => {
       console.log(error.message);
     } finally {
       setLoading(false);
+      setUpdate(!update);
     }
   };
 
@@ -76,5 +77,7 @@ export const useAccount = () => {
     session,
     updateProfile,
     getProfile,
+    update,
+    setUpdate,
   };
 };
