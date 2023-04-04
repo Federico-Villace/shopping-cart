@@ -33,7 +33,11 @@ export const Account = () => {
             </div>
             <form
               onSubmit={() => {
-                updateProfile(), setUpdate(!update);
+                updateProfile(),
+                  () => {
+                    e.preventDefault();
+                    setUpdate(!update);
+                  };
               }}
               className="form-widget"
             >
