@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import { ToastContainer } from "react-toastify";
-import {
-  sentMaginLinkMessage,
-  sendingMagicLinkMessage,
-  failedMagicLink,
-} from "../../utils/Toastify";
+import { sentMaginLinkMessage, failedMagicLink } from "../../utils/Toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
 const redirectTo = "/Account";

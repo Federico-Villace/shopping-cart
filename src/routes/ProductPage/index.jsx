@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartProvider } from "../../context/cart";
 import { Cart } from "../../components/Cart/CartComponent";
@@ -8,9 +9,14 @@ import { Spinner } from "../../components/Spinner";
 import { AddToCartButton } from "./AddToCartButton";
 import "./Product.css";
 import axios from "axios";
+import { useSession } from "../../hooks/useSession";
+import { ToastContainer } from "react-toastify";
+import { notUserFound } from "../../utils/Toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ProductPage = () => {
   const { product } = useProducts();
+  const { session } = useSession();
   const location = useLocation();
   const state = location.state;
   const { id, title, description, price, thumbnail } = state;
@@ -24,6 +30,22 @@ export const ProductPage = () => {
       quantity: 1,
     },
   ];
+
+  const handleClick = () => {
+    if (session === null) {
+      notUserFound();
+    } else {
+      axios
+        .post("http://localhost:3001/payment", mlProd)
+        .then(
+          (res) => (window.location.href = res.data.response.body.init_point)
+        );
+    }
+  };
+
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
 
   return (
     <CartProvider>
@@ -56,19 +78,8 @@ export const ProductPage = () => {
                   <p>{description}</p>
                 </div>
                 <AddToCartButton product={state} />
-                <button
-                  onClick={() =>
-                    axios
-                      .post("http://localhost:3001/payment", mlProd)
-                      .then(
-                        (res) =>
-                          (window.location.href =
-                            res.data.response.body.init_point)
-                      )
-                  }
-                >
-                  Buy it Now!
-                </button>
+                <button onClick={handleClick}>Buy it Now!</button>
+                <ToastContainer />
               </div>
             </div>
           </div>

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { failedMagicLink } from "../../utils/Toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./CheckoutPage.css";
 import axios from "axios";
 

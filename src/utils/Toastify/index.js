@@ -33,3 +33,15 @@ export const failedMagicLink = () => {
     theme: "colored",
   });
 };
+
+export const notUserFound = () => {
+  toast.error("No session found, Login first to buy!", {
+    position: "top-center",
+    autoClose: 2500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "colored",
+  });
+};
