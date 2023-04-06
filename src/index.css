@@ -160,7 +160,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 45em) {
+@media only screen and (width: 45em) {
   /* 720px */
   .col-1 {
     width: 4.33%;
@@ -203,7 +203,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (width: 60em) {
   /* 960px */
   .container {
     width: 75%;
@@ -354,7 +354,7 @@ button.primary,
   justify-content: left;
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (width: 60em) {
   /* 960px */
   .footer > div:first-child {
     display: flex;

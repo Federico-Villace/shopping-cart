@@ -13,34 +13,29 @@ export const Header = () => {
     <header>
       <nav>
         <ul className="header-nav">
-          <li className="header-li">
-            <label>{username}</label>
-          </li>
           {!session ? (
-            <li className="header-li">
+            <div className="header-div">
               <Link
                 to={"/Authorization"}
                 style={{ textDecorationLine: "none" }}
               >
                 <label className="label">Sign In</label>
               </Link>
-            </li>
+            </div>
           ) : (
-            <li className="header-li">
+            <div className="header-div">
+              <label>{username}</label>
               <Link to="/Account">
                 <UserIcon />
               </Link>
-            </li>
+            </div>
           )}
           {session && (
             <>
-              <li className="header-li">
+              <div className="header-div">
                 <label>logout</label>
-              </li>
-
-              <li>
                 <LogoutButton />
-              </li>
+              </div>
             </>
           )}
         </ul>

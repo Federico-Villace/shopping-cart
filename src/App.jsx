@@ -20,7 +20,6 @@ function App() {
     <CartProvider>
       <Header session={session} />
       <Title getProduct={getProduct} updateProducts={updateProducts} />
-      <Filters />
       <Cart />
       {products?.length === 0 && product.length === 0 ? (
         <Spinner />

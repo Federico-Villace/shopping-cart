@@ -1,5 +1,6 @@
 import { useCart } from "../../hooks/useCart";
 import { useProducts } from "../../hooks/useProducts";
+import { Filters } from "../Filters/Filters";
 import { Product } from "../Product/index.jsx";
 import "./products.css";
 
@@ -13,6 +14,9 @@ export function Products({ products }) {
 
   return (
     <main className="products">
+      <div>
+        <Filters />
+      </div>
       <ul>
         {products.map((prod) => {
           const isProdInCart = chechProductInCart(prod);
