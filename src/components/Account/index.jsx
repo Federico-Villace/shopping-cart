@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useAccount } from "../../hooks/useAccount";
 import { useSession } from "../../hooks/useSession";
 import { Spinner } from "../Spinner";
@@ -8,12 +7,14 @@ import "./account.css";
 
 export const Account = () => {
   const { session } = useSession();
-
+  console.log(session);
   const {
     username,
     setUsername,
-    website,
-    setWebsite,
+    name,
+    setName,
+    last_name,
+    setLastName,
     loading,
     updateProfile,
     update,
@@ -56,12 +57,21 @@ export const Account = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="website">Website</label>
+                    <label htmlFor="name">Name</label>
                     <input
-                      id="website"
-                      type="url"
-                      value={website || ""}
-                      onChange={(e) => setWebsite(e.target.value)}
+                      id="name"
+                      type="text"
+                      value={name || ""}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="last_name">Last Name</label>
+                    <input
+                      id="last_name"
+                      type="text"
+                      value={last_name || ""}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                   </div>
                   <div style={{ display: "flex", justifyContent: "center" }}>
@@ -73,12 +83,16 @@ export const Account = () => {
               ) : (
                 <>
                   <div>
-                    <label htmlFor="username">Name</label>
+                    <label htmlFor="username">Username</label>
                     {username}
                   </div>
                   <div>
-                    <label htmlFor="website">Website</label>
-                    {website}
+                    <label htmlFor="website">Name</label>
+                    {name}
+                  </div>
+                  <div>
+                    <label htmlFor="website">Last Name</label>
+                    {last_name}
                   </div>
                 </>
               )}

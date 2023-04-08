@@ -8,7 +8,6 @@ import "./headers.css";
 export const Header = () => {
   const { username } = useAccount();
   const { session } = useSession();
-
   return (
     <header>
       <nav>

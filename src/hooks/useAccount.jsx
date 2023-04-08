@@ -7,8 +7,8 @@ export const useAccount = () => {
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
+  const [name, setName] = useState(null);
+  const [last_name, setLastName] = useState(null);
 
   useEffect(() => {
     getProfile();
@@ -21,7 +21,7 @@ export const useAccount = () => {
 
       let { data, error, status } = await supabase
         .from("profiles")
-        .select(`username, website, avatar_url`)
+        .select(`username, name, last_name`)
         .eq("id", user.id)
         .single();
 
@@ -31,8 +31,8 @@ export const useAccount = () => {
 
       if (data) {
         setUsername(data.username);
-        setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
+        setName(data.name);
+        setLastName(data.last_name);
       }
     } catch (error) {
       console.log(error.message);
@@ -51,8 +51,8 @@ export const useAccount = () => {
       const updates = {
         id: user.id,
         username,
-        website,
-        avatar_url,
+        name,
+        last_name,
       };
 
       let { error } = await supabase.from("profiles").upsert(updates);
@@ -71,8 +71,10 @@ export const useAccount = () => {
   return {
     username,
     setUsername,
-    website,
-    setWebsite,
+    name,
+    setName,
+    last_name,
+    setLastName,
     loading,
     session,
     updateProfile,
