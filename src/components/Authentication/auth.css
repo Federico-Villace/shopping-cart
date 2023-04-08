@@ -29,4 +29,8 @@
     background-size: cover;
     background-position: bottom;
   }
+
+  .auth-card {
+    width: 100%;
+  }
 }

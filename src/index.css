@@ -440,7 +440,7 @@ h4 {
 
 @media only screen and (max-width: 600px) {
   input {
-    width: 60%;
+    width: 100%;
     border-radius: 5px;
     border: var(--custom-border);
     padding: 8px;

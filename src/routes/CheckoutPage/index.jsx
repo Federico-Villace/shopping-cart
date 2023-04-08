@@ -30,7 +30,7 @@ function CheckoutPage() {
   );
 
   const totalPrice = products.reduce(
-    (total, product) => total + product.price,
+    (total, product) => total + product.price * product.quantity,
     0
   );
 
