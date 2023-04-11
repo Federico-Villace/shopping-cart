@@ -13,7 +13,7 @@ export const useProducts = () => {
   }, [product]);
 
   const getElements = () => {
-    return fetch(URL)
+    return fetch(`${URL}?limit=9`)
       .then((res) => res.json())
       .then((data) => setProducts(data.products));
   };

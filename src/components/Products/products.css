@@ -11,10 +11,6 @@
   gap: 1rem;
 }
 
-.products div {
-  margin-right: 25px;
-}
-
 .products li {
   display: flex;
   flex-direction: column;
