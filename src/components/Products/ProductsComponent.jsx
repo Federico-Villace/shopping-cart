@@ -7,12 +7,18 @@ import "./products.css";
 
 export function Products() {
   const { cart } = useCart();
-  const { getSelectedProduct, limit, setLimit, products } = useProducts();
+  const { getSelectedProduct, limit, setLimit, skip, setSkip, products } =
+    useProducts();
   const { filteredProducts } = useFilters();
   const filterProducts = filteredProducts(products);
 
   const chechProductInCart = (product) => {
     return cart.some((item) => item.id === product.id);
+  };
+
+  const handleClick = () => {
+    setLimit(limit + 9);
+    setSkip(skip + 9);
   };
 
   return (
@@ -32,7 +38,7 @@ export function Products() {
             />
           );
         })}
-        <button onClick={() => setLimit(limit + 10)}>Load More</button>
+        <button onClick={handleClick}>Load More</button>
       </ul>
     </main>
   );

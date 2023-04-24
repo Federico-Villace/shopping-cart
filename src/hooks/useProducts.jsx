@@ -8,16 +8,18 @@ export const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [limit, setLimit] = useState(9);
+  const [skip, setSkip] = useState(0);
 
-  console.log(products);
   useEffect(() => {
     getElements();
   }, [product, limit]);
 
   const getElements = () => {
-    return fetch(`${URL}?limit=${limit}`)
+    return fetch(`${URL}?limit=${limit}&skip=${skip}`)
       .then((res) => res.json())
-      .then((data) => setProducts(data.products));
+      .then((data) =>
+        setProducts((prevProds) => prevProds.concat(data.products))
+      );
   };
 
   const getProduct = (input) => {
@@ -47,5 +49,7 @@ export const useProducts = () => {
     updateProducts,
     limit,
     setLimit,
+    skip,
+    setSkip,
   };
 };
