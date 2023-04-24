@@ -3,12 +3,21 @@ import { useFilters } from "../../hooks/useFilters";
 import { useProducts } from "../../hooks/useProducts";
 import { Filters } from "../Filters/Filters";
 import { Product } from "../Product/index.jsx";
+import { Title } from "../Title";
 import "./products.css";
 
 export function Products() {
   const { cart } = useCart();
-  const { getSelectedProduct, limit, setLimit, skip, setSkip, products } =
-    useProducts();
+  const {
+    getSelectedProduct,
+    limit,
+    setLimit,
+    skip,
+    setSkip,
+    products,
+    getProduct,
+    updateProducts,
+  } = useProducts();
   const { filteredProducts } = useFilters();
   const filterProducts = filteredProducts(products);
 
@@ -23,6 +32,7 @@ export function Products() {
 
   return (
     <main className="products">
+      <Title getProduct={getProduct} updateProducts={updateProducts} />
       <div>
         <Filters />
       </div>
