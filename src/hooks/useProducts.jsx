@@ -7,13 +7,15 @@ export const useProducts = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
+  const [limit, setLimit] = useState(9);
 
+  console.log(products);
   useEffect(() => {
     getElements();
-  }, [product]);
+  }, [product, limit]);
 
   const getElements = () => {
-    return fetch(`${URL}?limit=9`)
+    return fetch(`${URL}?limit=${limit}`)
       .then((res) => res.json())
       .then((data) => setProducts(data.products));
   };
@@ -43,5 +45,7 @@ export const useProducts = () => {
     product,
     getSelectedProduct,
     updateProducts,
+    limit,
+    setLimit,
   };
 };
