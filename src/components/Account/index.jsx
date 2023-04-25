@@ -7,7 +7,6 @@ import "./account.css";
 
 export const Account = () => {
   const { session } = useSession();
-  console.log(session);
   const {
     username,
     setUsername,
@@ -47,7 +46,7 @@ export const Account = () => {
               {update ? (
                 <>
                   <div>
-                    <label htmlFor="username">Name</label>
+                    <label htmlFor="username">Username</label>
 
                     <input
                       id="username"

@@ -9,7 +9,6 @@ import "./products.css";
 
 export function Products() {
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 9;
 
   const { cart } = useCart();
   const {
@@ -23,15 +22,10 @@ export function Products() {
   } = useProducts();
   const { filteredProducts } = useFilters();
   const filterProducts = filteredProducts(products);
+  console.log(products);
 
   const chechProductInCart = (product) => {
     return cart.some((item) => item.id === product.id);
-  };
-
-  const getProductsForPage = (products, page, perPage) => {
-    const startIndex = (page - 1) * perPage;
-    const endIndex = startIndex + perPage;
-    return products.concat(startIndex, endIndex);
   };
 
   useEffect(() => {
@@ -48,12 +42,7 @@ export function Products() {
     return () => window.removeEventListener("scroll", checkEndPage);
   }, [currentPage]);
 
-  const currentProducts = getProductsForPage(
-    // gets the products for the current page
-    filterProducts,
-    currentPage,
-    productsPerPage
-  );
+  const totalPages = Math.ceil(filterProducts.length / limit);
 
   return (
     <main className="products">
@@ -62,17 +51,21 @@ export function Products() {
         <Filters />
       </div>
       <ul>
-        {currentProducts.map((prod) => {
-          const isProdInCart = chechProductInCart(prod);
-          return (
-            <Product
-              product={prod}
-              isProdInCart={isProdInCart}
-              key={prod.id}
-              onSelected={(prod) => getSelectedProduct(prod)}
-            />
-          );
-        })}
+        {[...Array(totalPages)].map((_, pageIndex) =>
+          filterProducts
+            .slice(pageIndex * limit, (pageIndex + 1) * limit)
+            .map((prod) => {
+              const isProdInCart = chechProductInCart(prod);
+              return (
+                <Product
+                  product={prod}
+                  isProdInCart={isProdInCart}
+                  key={prod.id + "_" + pageIndex}
+                  onSelected={(prod) => getSelectedProduct(prod)}
+                />
+              );
+            })
+        )}
       </ul>
     </main>
   );
