@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Title.css";
 
-export const Title = ({ getProduct, updateProducts }) => {
+export const Title = ({ getProduct }) => {
   const [input, setInput] = useState("");
 
   const handleChange = (e) => {
@@ -9,7 +9,7 @@ export const Title = ({ getProduct, updateProducts }) => {
   };
 
   const handleClick = () => {
-    updateProducts();
+    window.location.reload(); // Reload the page
   };
 
   return (
