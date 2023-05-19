@@ -9,6 +9,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   gap: 1rem;
+  grid-auto-rows: minmax(320px, auto);
 }
 
 .products li {
@@ -21,7 +22,7 @@
   background: #111;
   color: #fff;
   padding: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .products li:hover {
