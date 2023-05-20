@@ -47,9 +47,7 @@ export function Products() {
   return (
     <main className="products">
       <Title getProduct={getProduct} />
-      <div>
-        <Filters />
-      </div>
+
       <ul>
         {[...Array(totalPages)].map((_, pageIndex) =>
           filterProducts
