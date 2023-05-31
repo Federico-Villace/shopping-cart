@@ -44,8 +44,8 @@
 .products img {
   border-radius: 4px;
   width: 100%;
-  aspect-ratio: 16/9;
-  display: block;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  display: block;
   background: #000000;
 }
