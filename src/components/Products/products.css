@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+.products li:active {
+  border: solid blue;
+}
+
 .products h3 {
   margin: 0;
 }
